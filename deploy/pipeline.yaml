@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pipeline-backing-services
+spec:
+  serviceName: pipeline
+  selector:
+    matchLabels:
+      app: pipeline
+  template:
+    metadata:
+      labels:
+        app: pipeline
+    spec:
+      containers:
+        - name: kafka
+          image: bitnami/kafka:latest
+        - name: zookeeper
+          image: zookeeper:latest
+        - name: minio
+          image: minio/minio:latest
+        - name: mongodb
+          image: mongo:latest
+        - name: clickhouse
+          image: clickhouse/clickhouse-server:latest
+        - name: flower
+          image: mher/flower:latest

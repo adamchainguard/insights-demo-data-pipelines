@@ -1,0 +1,17 @@
+services:
+  airflow:
+    image: apache/airflow:latest
+  postgres:
+    image: postgres:latest
+  redis:
+    image: redis:latest
+  flower:
+    image: mher/flower:latest
+  minio:
+    image: minio/minio:latest
+  clickhouse-server:
+    image: clickhouse/clickhouse-server:latest
+  trino:
+    image: trinodb/trino:latest
+  superset:
+    image: apache/superset:latest

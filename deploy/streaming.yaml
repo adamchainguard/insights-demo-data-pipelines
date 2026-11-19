@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: kafka
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      containers:
+        - name: kafka
+          image: apache/kafka:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cp-kafka
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: cp-kafka
+  template:
+    metadata:
+      labels:
+        app: cp-kafka
+    spec:
+      containers:
+        - name: cp-kafka
+          image: confluentinc/cp-kafka:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zookeeper
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: zookeeper
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+        - name: zookeeper
+          image: bitnami/zookeeper:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nats
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: nats
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      containers:
+        - name: nats
+          image: bitnami/nats:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cassandra
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: cassandra
+  template:
+    metadata:
+      labels:
+        app: cassandra
+    spec:
+      containers:
+        - name: cassandra
+          image: cassandra:latest
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lite
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: lite
+  template:
+    metadata:
+      labels:
+        app: lite
+    spec:
+      containers:
+        - name: lite
+          image: vitess/lite:latest
